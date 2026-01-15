@@ -1,12 +1,25 @@
+import { useState } from "react";
+import InscripcionForm from "./components/InscripcionForm";
+import Login from "./components/login";
+import AdminPanel from "./components/AdminPanel";
 
-import './App.css'
 function App() {
+  const [isAdmin, setIsAdmin] = useState(false);
+
   return (
-    <div>
-      <h1>Torneo de Pádel</h1>
-      <p>Formulario de inscripción</p>
+    <div style={{ padding: "20px" }}>
+      <h1>Torneo de Pádel IAW</h1>
+
+      {!isAdmin ? (
+        <>
+          <InscripcionForm />
+          <Login setIsAdmin={setIsAdmin} />
+        </>
+      ) : (
+        <AdminPanel />
+      )}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
